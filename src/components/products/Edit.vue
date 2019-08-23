@@ -36,30 +36,33 @@ export default {
   name: "Edit",
   data() {
     return {
-      product: null,
+      name: null,
+      description: null,
+      price: null,
+      slug: null,
       feedback: null
     };
   },
   methods: {
     editProduct() {
-      if (this.product.name && this.product.description && this.product.price) {
+      if (this.name && this.description && this.price) {
         this.feedback = null;
-        this.product.slug = slugify(this.product.name, {
+        this.slug = slugify(this.name, {
           replacement: "-",
           remove: /$_+~.()'"!\-:@]/g,
           lower: true
         });
-        console.log(this.product.slug);
+        console.log(this.slug);
         db.collection("products")
           .doc(this.product.id)
           .update({
-            name: this.product.name,
-            description: this.product.description,
-            price: this.product.price,
-            slug: this.product.slug
+            name: this.name,
+            description: this.description,
+            price: this.price,
+            slug: this.slug
           })
           .then(() => {
-            this.$router.push({ path: "/show" });
+            this.$router.push({ name: "Show" });
           })
           .catch(err => {
             console.log(err);

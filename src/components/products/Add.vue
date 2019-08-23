@@ -13,6 +13,11 @@
             @change="onFilePicked"
           />
         </div>
+
+        <div class="imageurl">
+          <img :src="imageUrl" alt="imgurl" height="150" />
+        </div>
+
         <div class="input-field col s6">
           <p class="sub_title">Product Name</p>
           <input type="text" name="name" class="validate" v-model="name" />
@@ -32,13 +37,14 @@
         </div>
       </div>
       <div class="field center-align btn_box">
-        <button class="btn waves-effect waves-light deep-orange lighten-1">Add Item</button>
+        <button class="btn waves-effect waves-light deep-orange lighten-1" @click="upload">Add Item</button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import firebase from "firebase/app";
 import db from "@/firebase/init";
 import slugify from "slugify";
 export default {
@@ -68,6 +74,7 @@ export default {
           description: this.description,
           price: this.price,
           imageUrl: this.imageUrl,
+          image: this.image,
           slug: this.slug
         })
         .then(() => {
@@ -78,25 +85,35 @@ export default {
           console.log(err);
         });
     },
-
-    // IMAGE UPLOAD
+    upload() {},
     onPickFile() {
       this.$refs.fileInput.click();
     },
     onFilePicked(event) {
-      const files = event.target.files;
-      let filename = files[0].name;
+      let file = event.target.files[0];
+      let storageRef = firebase.storage().ref("images/" + file.name);
+      let uploadTask = storageRef.put(file);
+      console.log(event.target.files[0]);
 
-      if (filename.lastIndexOf(".") <= 0) {
-        return alert("Please add a valid file");
-      }
+      // const files = event.target.files;
+      // let filename = files[0].name;
 
-      const fileReader = new FileReader();
-      fileReader.addEventListener("load", () => {
-        this.imageUrl = fileReader.result;
-      });
-      fileReader.readAsDataURL(files[0]);
-      this.image = files[0];
+      // if (filename.lastIndexOf(".") <= 0) {
+      //   return alert("Please add a valid file");
+      // }
+      // const fileReader = new FileReader();
+      // fileReader.addEventListener("load", () => {
+      //   this.imageUrl = fileReader.result;
+      // });
+      // fileReader.readAsDataURL(files[0]);
+      // this.image = files[0];
+      // firestorage
+      //   .ref("images")
+      //   .child(filename)
+      //   .put(this.image)
+      //   .then(snapshot => {
+      //     console.log(snapshot);
+      //   });
     }
   }
 };

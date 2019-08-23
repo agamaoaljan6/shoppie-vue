@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <h1>{{user.email}}'s Profile</h1>
+    <h1>Your Profile</h1>
     <h2>Products Ordered</h2>
   </div>
 </template>
@@ -11,7 +11,8 @@ import "firebase/firebase-auth";
 export default {
   data() {
     return {
-      user: null
+      // user: null,
+      // email: null
     };
   },
   created() {
