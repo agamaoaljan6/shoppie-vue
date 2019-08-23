@@ -16,8 +16,14 @@
               </div>
               <p v-if="feedback" class="red-text center">{{feedback}}</p>
               <div class="field center btn_field">
-                <button class="btn waves-effect waves-light deep-orange lighten-1">Login</button>
+                <button
+                  class="btn waves-effect waves-light btn custom-btn btn-outline-secondary lighten-1"
+                >Login</button>
               </div>
+              <p class="create-account">
+                New customer? Create an
+                <a>account</a> here!
+              </p>
             </form>
           </div>
         </div>
@@ -86,5 +92,13 @@ export default {
 }
 .content {
   margin-top: 9em;
+}
+.btn {
+  margin-top: 1em;
+}
+.create-account {
+  margin-top: 1em;
+  margin-right: 2em;
+  text-align: center;
 }
 </style>

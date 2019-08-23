@@ -74,7 +74,27 @@
           </div>
         </div>
       </div>
-      <!-- --------------  -->
+      <!-- Footer  -->
+      <div>
+        <div class="footer">
+          <div class="container">
+            © 2019 Copyright
+            <ul class="icons">
+              <li class="icon">
+                <i class="fa fa-facebook-square"></i>
+              </li>
+              <li class="icon">
+                <i class="fa fa-instagram"></i>
+              </li>
+              <li class="icon">
+                <i class="fa fa-twitter"></i>
+              </li>
+            </ul>
+
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -131,5 +151,20 @@ export default {
 .contact {
   margin-top: 2em;
   margin-bottom: 3em;
+}
+.footer {
+  margin-top: 5em;
+  text-align: center;
+}
+.icons {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  font-size: 2.5em;
+}
+.icon:hover {
+  opacity: 0.5;
 }
 </style>

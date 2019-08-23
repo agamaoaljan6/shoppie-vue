@@ -28,7 +28,7 @@
   </div>-->
 
   <div class="navbar">
-    <nav class="navbox grey darken-3">
+    <nav class="navbox indigo lighten-2 white-text text-lighten-2">
       <div class="container">
         <router-link :to="{name :'Homepage'}" class="brand-logo left">
           <img :src="require('@/assets/store.svg')" class="logo" width="50" height="50" />

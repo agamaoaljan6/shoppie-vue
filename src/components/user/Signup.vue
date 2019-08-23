@@ -5,7 +5,7 @@
         <div class="col m6 content">
           <div class="hero-content">
             <form @submit.prevent="signUp" class="card-panel">
-              <h2 class="center">Signup</h2>
+              <h2 class="center header-text">Create an account</h2>
               <div class="field">
                 <label for="alias">Name</label>
                 <input type="text" name="alias" v-model="name" />
@@ -20,8 +20,14 @@
               </div>
               <p class="red-text center" v-if="feedback">{{feedback}}</p>
               <div class="field center">
-                <button class="btn waves-effect waves-light deep-orange lighten-1">Signup</button>
+                <button
+                  class="btn waves-effect waves-light btn custom-btn btn-outline-secondary lighten-1"
+                >Signup</button>
               </div>
+              <p class="signin-here">
+                Already registered?
+                <a>Sign in</a> here!
+              </p>
             </form>
           </div>
         </div>
@@ -94,14 +100,13 @@ export default {
 </script>
 
 <style scoped>
-.signup {
-  width: 35%;
-  margin-top: 70px;
+.header-text {
+  margin-bottom: 1em;
 }
 
 .img {
-  margin-top: 7em;
-  margin-left: 2em;
+  margin-top: 6em;
+  margin-left: 1.5em;
   content: "";
   width: 100%;
   height: 100%;
@@ -112,6 +117,14 @@ export default {
   z-index: -1;
 }
 .content {
-  margin: 8em auto;
+  margin: 3.5em auto;
+}
+.btn {
+  margin-top: 2em;
+}
+.signin-here {
+  margin-top: 1em;
+  margin-right: 2em;
+  text-align: center;
 }
 </style>

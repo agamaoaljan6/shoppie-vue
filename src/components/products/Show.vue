@@ -4,31 +4,25 @@
     <div class="index">
       <div class="card" v-for="(product) in products" :key="product.id">
         <div class="card-content">
-          <h4>
-            <router-link :to="{name:'Index',params:{product_slug: product.slug}}">{{product.name}}</router-link>
-          </h4>
-          <h5>${{product.price}}</h5>
-          <router-link :to="{name: 'Edit', params:{product_slug: product.slug}}">EDIT</router-link>
-
-          <i
-            @click="deleteProduct(product.id)"
-            class="material-icons grey-text delete"
-          >delete_forever</i>
-
-          <div class="divider">
+          <div class="card-text">
+            <p class="product-name">{{product.name}}</p>
+            <p class="product-price">${{product.price}}</p>
+            <p class="product-description">{{product.description}}</p>
+          </div>
+          <div class="icons">
             <ul class="left_icon">
-              <li v-show="deletebtn" @click="deleteItem(product.id)">
-                <i class="material-icons grey-text delete">delete_forever</i>
-              </li>
-              <li v-show="editbtn">
-                <router-link :to="{ name: 'Edit', params:{product_slug: product.slug}}">
-                  <i class="material-icons grey-text">edit</i>
-                </router-link>
-              </li>
+              <router-link :to="{ name: 'Edit', params:{product_slug: product.slug}}">
+                <i class="material-icons grey-text">edit</i>
+              </router-link>
+              <i
+                @click="deleteProduct(product.id)"
+                class="material-icons grey-text delete"
+              >delete_forever</i>
             </ul>
+
             <ul class="right_icon">
               <li>
-                <router-link :to="{ name: 'Detail', params: {product_slug: product.slug}}">
+                <router-link :to="{ name: 'Index', params: {product_slug: product.slug}}">
                   <i class="material-icons grey-text">local_grocery_store</i>
                 </router-link>
               </li>
@@ -87,13 +81,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 .index {
   padding-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 1.7em;
+  margin-right: 1.7em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
@@ -101,6 +95,7 @@ export default {
 
 .index .right_icon {
   float: right;
+  margin-right: 2em;
 }
 .index .left_icon li {
   display: inline-block;
@@ -109,12 +104,29 @@ export default {
 }
 .index .left_icon {
   float: left;
+  margin-left: 2em;
 }
 
 .index .delete {
   cursor: pointer;
   color: #aaa;
   margin-right: 5em;
-  float: right;
+}
+.icons {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+.card-text {
+  text-align: center;
+  margin-bottom: 1.4em;
+}
+.product-name {
+  font-size: 33px;
+}
+.product-price {
+  font-size: 24px;
+}
+.product-description {
+  font-size: 22px;
 }
 </style>
