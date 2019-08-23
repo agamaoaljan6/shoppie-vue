@@ -1,52 +1,58 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Homepage from '@/components/Homepage'
-import Productsindex from '@/components/Productsindex'
-import Productsshowpage from '@/components/Productsshowpage'
+// Products Components
+import Index from '@/components/products/Index'
+import Show from '@/components/products/Show'
+import Add from '@/components/products/Add'
+import Edit from '@/components/products/Edit'
+// User Components
 import Login from '@/components/user/Login'
 import Signup from '@/components/user/Signup'
 import Userprofile from '@/components/user/Userprofile'
-import Addproduct from '@/components/Addproduct'
-
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'Homepage',
       component: Homepage
     },
     {
-      path: '/productsindex',
-      name: 'Productsindex',
-      component: Productsindex
+      path: '/:product_slug',
+      name: 'Index',
+      component: Index
     },
-     {
-       path: '/productsshow',
-       name: 'Productsshowpage',
-       component: Productsshowpage
-     },
-     {
-       path: '/login',
-       name: 'Login',
-       component: Login
-     },
-      {
-        path:'/signup',
-        name: 'Signup',
-        component: Signup
-      },
-      {
-        path:'/userprofile',
-        name: 'Userprofile',
-        component: Userprofile
-      },
-       {
-         path: '/addproduct',
-         name: 'Addproduct',
-         component: Addproduct
-       }
+    {
+      path: '/show',
+      name: 'Show',
+      component: Show
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
+    },
+    {
+      path: '/userprofile',
+      name: 'Userprofile',
+      component: Userprofile
+    },
+    {
+      path: '/add',
+      name: 'Add',
+      component: Add
+    },
+    {
+      path: '/editproduct/:product_slug',
+      name: 'Edit',
+      component: Edit
+    }
   ]
 })
