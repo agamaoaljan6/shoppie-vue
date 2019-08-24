@@ -14,6 +14,11 @@
           <li v-if="!user">
             <router-link :to="{name: 'Login'}">Login</router-link>
           </li>
+          <li v-if="user" class="cart">
+            <router-link :to="{name : 'Cart'}">
+              <i class="material-icons white-text">local_grocery_store</i>
+            </router-link>
+          </li>
           <li v-if="user">
             <router-link :to="{name: 'Add'}">Add Items</router-link>
           </li>
@@ -33,12 +38,16 @@
 <script>
 import firebase from "firebase/app";
 import "firebase/firebase-auth";
+import Slider from "@jeremyhamm/vue-slider";
 export default {
   name: "Navbar",
   data() {
     return {
       user: null
     };
+  },
+  components: {
+    slider: Slider
   },
   methods: {
     signOut() {
@@ -64,6 +73,10 @@ export default {
 
 
 <style scoped>
+.cart {
+  padding-top: 0.25em;
+  /* margin-right:em; */
+}
 .logo {
   margin-top: 6.5px;
 }
@@ -72,7 +85,7 @@ a {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 .home {

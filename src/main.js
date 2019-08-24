@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 
 import Carousel3d from 'vue-carousel-3d';
+
+
 Vue.use(Carousel3d);
 
 Vue.config.productionTip = false

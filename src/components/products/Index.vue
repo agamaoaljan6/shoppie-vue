@@ -18,7 +18,8 @@ export default {
   data() {
     return {
       product: [],
-      products: []
+      products: [],
+      user: null
     };
   },
   methods: {
@@ -34,6 +35,13 @@ export default {
     }
   },
   created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
     let ref = db
       .collection("products")
       .where("slug", "==", this.$route.params.product_slug);
@@ -45,16 +53,6 @@ export default {
       });
       console.log(this.product);
     });
-    db.collection("users")
-      .where("uid", "==", firebase.auth().currentUser.id)
-      .get()
-      .then(snapshot => {
-        snapshot.forEach(doc => {
-          (this.user = doc.data()), (this.user.id = doc.id);
-        });
-        console.log("get current user id");
-        console.log(this.user.id);
-      });
   }
 };
 </script>

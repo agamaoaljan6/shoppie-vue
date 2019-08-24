@@ -203,7 +203,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-
   font-size: 2.5em;
 }
 .icon:hover {
