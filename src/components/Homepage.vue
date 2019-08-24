@@ -8,7 +8,9 @@
             <h1 class="hero-title">Shoppie</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos numquam tempora, iure delectus totam minus quam aperiam ratione dolores magni voluptates ut necessitatibus odio ipsum fuga, voluptas ab praesentium nihil?</p>
             <div class="hero-btn mt-5">
-              <button class="btn custom-btn btn-info mr-4">Explore</button>
+              <router-link :to="{name:'Signup'}">
+                <button class="btn custom-btn btn-info mr-4">Get started</button>
+              </router-link>
               <router-link :to="{name:'Show'}">
                 <button class="btn custom-btn btn-outline-secondary">Products</button>
               </router-link>
@@ -115,8 +117,6 @@
                 <i class="fa fa-twitter"></i>
               </li>
             </ul>
-
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
           </div>
         </div>
       </div>

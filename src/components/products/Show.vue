@@ -12,13 +12,14 @@
             <p class="product-price">${{product.price}}</p>
             <p class="product-description">{{product.description}}</p>
           </div>
-          <div class="icons" v-if="!user">
-            <ul class="left_icon">
+          <div class="icons">
+            <ul class="left_icon" v-if="user">
               <router-link :to="{ name: 'Edit', params:{product_slug: product.slug}}">
                 <i class="material-icons grey-text">edit</i>
               </router-link>
               <i
                 @click="deleteProduct(product.id)"
+                v-if="user"
                 class="material-icons grey-text delete"
               >delete_forever</i>
             </ul>
@@ -26,7 +27,7 @@
             <ul class="right_icon">
               <li>
                 <router-link :to="{ name: 'Index', params: {product_slug: product.slug}}">
-                  <i class="material-icons grey-text">local_grocery_store</i>
+                  <i class="material-icons grey-text">add_shopping_cart</i>
                 </router-link>
               </li>
             </ul>
@@ -64,6 +65,13 @@ export default {
     }
   },
   created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
     db.collection("products")
       .get()
       .then(snapshot => {
@@ -95,6 +103,7 @@ export default {
   padding-top: 20px;
   margin-left: 1.7em;
   margin-right: 1.7em;
+  margin-bottom: 1.7em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;

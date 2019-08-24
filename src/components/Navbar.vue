@@ -1,32 +1,4 @@
 <template>
-  <!-- <div class="header">
-    <div class="home">
-      <router-link :to="{path:'/'}">
-        <h1>HOME</h1>
-      </router-link>
-      <router-link :to="{path:'/show'}" class="product">Products</router-link>
-    </div>
-    <nav>
-      <ul class="nav__links">
-        <li v-if="!user">
-          <a href="">Your Cart</a>
-        </li>
-        <li v-if="!user">
-          <router-link :to="{name:'Login', path:'/login'}">Log In</router-link>
-        </li>
-        <li v-if="!user">
-          <router-link :to="{name:'Signup',path:'/signup'}">Sign Up</router-link>
-        </li>
-        <li v-if="user">
-          <router-link :to="{path:'/userprofile'}">{{user.email}}</router-link>
-        </li>
-        <li v-if="user">
-          <a @click="signOut">Sign Out</a>
-        </li>
-      </ul>
-    </nav>
-  </div>-->
-
   <div class="navbar">
     <nav class="navbox indigo lighten-2 white-text text-lighten-2">
       <div class="container">
