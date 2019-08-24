@@ -101,7 +101,7 @@ export default {
 
 <style scoped>
 .header-text {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .img {

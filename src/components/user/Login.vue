@@ -5,7 +5,7 @@
         <div class="col m6 content">
           <div class="hero-content">
             <form @submit.prevent="signIn" class="card-panel">
-              <h2 class="center">Login</h2>
+              <h2 class="center">Sign in</h2>
               <div class="field">
                 <label for="email">Email:</label>
                 <input type="email" name="email" v-model="email" />

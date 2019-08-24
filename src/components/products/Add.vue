@@ -15,7 +15,9 @@
         </div>
 
         <div class="imageurl">
-          <img :src="imageUrl" alt="imgurl" height="150" />
+          <div v-for="(image) in images" :key="image.id">
+            <img :src="image" alt="imgurl" height="150" />
+          </div>
         </div>
 
         <div class="input-field col s6">
@@ -55,8 +57,7 @@ export default {
       description: null,
       price: null,
       slug: null,
-      imageUrl: null,
-      image: null
+      images: []
     };
   },
   methods: {
@@ -73,8 +74,7 @@ export default {
           name: this.name,
           description: this.description,
           price: this.price,
-          imageUrl: this.imageUrl,
-          image: this.image,
+          images: this.images,
           slug: this.slug
         })
         .then(() => {
@@ -95,25 +95,12 @@ export default {
       let uploadTask = storageRef.put(file);
       console.log(event.target.files[0]);
 
-      // const files = event.target.files;
-      // let filename = files[0].name;
-
-      // if (filename.lastIndexOf(".") <= 0) {
-      //   return alert("Please add a valid file");
-      // }
-      // const fileReader = new FileReader();
-      // fileReader.addEventListener("load", () => {
-      //   this.imageUrl = fileReader.result;
-      // });
-      // fileReader.readAsDataURL(files[0]);
-      // this.image = files[0];
-      // firestorage
-      //   .ref("images")
-      //   .child(filename)
-      //   .put(this.image)
-      //   .then(snapshot => {
-      //     console.log(snapshot);
-      //   });
+      uploadTask.on("state_changed", snapshot => {
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
+          this.images.push(downloadURL);
+          console.log("File available at", downloadURL);
+        });
+      });
     }
   }
 };
@@ -125,5 +112,10 @@ export default {
   align-items: center;
   flex-direction: column;
   margin: 5em auto;
+}
+.imageurl {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 </style>

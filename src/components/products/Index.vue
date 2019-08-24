@@ -37,6 +37,7 @@ export default {
     let ref = db
       .collection("products")
       .where("slug", "==", this.$route.params.product_slug);
+
     ref.get().then(snapshot => {
       snapshot.forEach(doc => {
         this.product = doc.data();
@@ -45,7 +46,7 @@ export default {
       console.log(this.product);
     });
     db.collection("users")
-      .where("user_id", "==", firebase.auth().currentUser.uid)
+      .where("uid", "==", firebase.auth().currentUser.id)
       .get()
       .then(snapshot => {
         snapshot.forEach(doc => {

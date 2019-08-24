@@ -5,11 +5,14 @@
       <div class="card" v-for="(product) in products" :key="product.id">
         <div class="card-content">
           <div class="card-text">
+            <div class="images">
+              <img :src="product.images" alt="imgurl" height="150" />
+            </div>
             <p class="product-name">{{product.name}}</p>
             <p class="product-price">${{product.price}}</p>
             <p class="product-description">{{product.description}}</p>
           </div>
-          <div class="icons">
+          <div class="icons" v-if="!user">
             <ul class="left_icon">
               <router-link :to="{ name: 'Edit', params:{product_slug: product.slug}}">
                 <i class="material-icons grey-text">edit</i>
@@ -43,7 +46,9 @@ export default {
   name: "Productsshowpage",
   data() {
     return {
-      products: []
+      products: [],
+      images: [],
+      user: null
     };
   },
   methods: {
@@ -66,6 +71,8 @@ export default {
           console.log(doc.data(), doc.id);
           let product = doc.data();
           product.id = doc.id;
+          images: product.images;
+          console.log(product.images);
           this.products.push(product);
         });
       })

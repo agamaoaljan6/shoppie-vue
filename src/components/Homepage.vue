@@ -38,10 +38,35 @@
           </div>
         </div>
       </div>
+      <!-- Carousel section -->
+      <div>
+        <p class="carousel-header" style="margin-bottom: 2em;">Our Best Sellers</p>
+        <carousel-3d class="carousel" :autoplay="true" :autoplay-timeout="3000" :display="6">
+          <slide :index="0">
+            <img src="https://i.imgur.com/GzNl8lf.jpg" height="270" />
+          </slide>
+          <slide :index="1">
+            <img src="https://i.imgur.com/M8uiYpt.jpg" height="270" />
+          </slide>
+          <slide :index="2">
+            <img src="https://i.imgur.com/nW4MBZZ.jpg" height="270" />
+          </slide>
+          <slide :index="3">
+            <img src="https://i.imgur.com/mTx0Krh.jpg" height="270" />
+          </slide>
+          <slide :index="4">
+            <img src="https://i.imgur.com/GFQJkSY.jpg" height="270" />
+          </slide>
+          <slide :index="5">
+            <img src="https://i.imgur.com/X13DNec.jpg" height="270" />
+          </slide>
+        </carousel-3d>
+      </div>
+
       <!-- contact section -->
       <div class="contact">
         <div class="col m10">
-          <h3 class="center-align">Contact Us!</h3>
+          <p class="center-align contact-header">Contact Us!</p>
           <div class="row">
             <form class="col m8 offset-m2 s12">
               <div class="row">
@@ -100,15 +125,32 @@
 </template>
 
 <script>
+import { Carousel3d, Slide } from "vue-carousel-3d";
+
 export default {
   data() {
     return {};
+  },
+  components: {
+    Carousel3d,
+    Slide
   }
 };
 </script>
 
 
 <style scoped>
+.carousel {
+  margin-top: 4em;
+  min-height: 50vh;
+}
+.carousel-header,
+.contact-header {
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .img {
   margin-top: 5em;
   content: "";
