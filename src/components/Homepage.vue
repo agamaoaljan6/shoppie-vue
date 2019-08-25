@@ -168,7 +168,7 @@ export default {
 }
 
 .img-2 {
-  margin-top: 5em;
+  margin-top: 3em;
   content: "";
   width: 100%;
   height: 100%;
@@ -179,7 +179,7 @@ export default {
   z-index: -1;
 }
 .content-2 {
-  margin-top: 5em;
+  margin-top: 3em;
 }
 
 .first-section,

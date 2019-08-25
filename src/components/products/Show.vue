@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h3 class="header">Product List</h3>
+    <h3 class="header">Products</h3>
+    <div class="search">
+      <div class="searching_box input-field col s6">
+        <input id="icon_prefix" type="text" class="validate" placeholder="Search" />
+      </div>
+    </div>
+    <div class="divider"></div>
     <div class="index">
       <div class="card" v-for="(product) in products" :key="product.id">
         <div class="card-content">
@@ -44,11 +50,10 @@ import firebase from "firebase/app";
 import "firebase/firebase-auth";
 import slugify from "slugify";
 export default {
-  name: "Productsshowpage",
+  name: "Show",
   data() {
     return {
       products: [],
-      images: [],
       user: null
     };
   },
@@ -100,13 +105,11 @@ export default {
 }
 
 .index {
-  padding-top: 20px;
-  margin-left: 1.7em;
-  margin-right: 1.7em;
-  margin-bottom: 1.7em;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 30px;
+  margin: 3em 1.7em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .index .right_icon {
@@ -144,5 +147,11 @@ export default {
 }
 .product-description {
   font-size: 22px;
+}
+.search {
+  width: 15%;
+  position: absolute;
+  top: 10%;
+  right: 10%;
 }
 </style>

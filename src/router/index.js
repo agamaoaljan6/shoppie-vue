@@ -6,6 +6,7 @@ import Index from '@/components/products/Index'
 import Show from '@/components/products/Show'
 import Add from '@/components/products/Add'
 import Edit from '@/components/products/Edit'
+import Cart from '@/components/products/Cart'
 // User Components
 import Login from '@/components/user/Login'
 import Signup from '@/components/user/Signup'
@@ -24,6 +25,11 @@ export default new Router({
       path: '/:product_slug',
       name: 'Index',
       component: Index
+    },
+    {
+      path: '/cart',
+      name: "Cart",
+      component: Cart
     },
     {
       path: '/show',
